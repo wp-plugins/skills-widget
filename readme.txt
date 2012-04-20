@@ -5,8 +5,6 @@ Requires at least: 2.8
 Tested up to: 3.3.1
 Stable tag: 1.0
 
-HTML5 Dinamyc Skills Diagram
-
 == Description ==
 
 This widget add a HTML5 skills diagram to your sidebar.
