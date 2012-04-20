@@ -4,7 +4,7 @@
 
 Plugin Name:  Skills Widget
 Plugin URI:   https://github.com/jlopezcur/skills-widget
-Description:  HTML5 Dinamyc Skills Diagram (based on tutorial from http://tympanus.net/codrops/2011/04/22/animated-skills-diagram/)
+Description:  HTML5 Dinamyc Skills Diagram
 Version:      1.0
 Author:       Javier López Úbeda
 Author URI:   http://www.noknokstdio.com
