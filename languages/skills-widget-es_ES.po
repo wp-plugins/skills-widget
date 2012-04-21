@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Skills Widget\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-19 19:45+0100\n"
-"PO-Revision-Date: 2012-04-19 19:45+0100\n"
+"POT-Creation-Date: 2012-04-21 17:37+0100\n"
+"PO-Revision-Date: 2012-04-21 17:38+0100\n"
 "Last-Translator: Javier <jlopezcur@gmail.com>\n"
 "Language-Team: Javier López Úbeda <info@noknokstdio.com>\n"
 "Language: \n"
@@ -16,20 +16,43 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../skills-widget.php:43
-#, fuzzy
-msgid "Allow skills diagrams"
-msgstr "Permite integrar diagramas de habilidades"
+#: ../skills-widget.php:40
+msgid "HTML5 Dinamyc Skills Diagram"
+msgstr "Diagrama de habilidades dinámico en HTML5"
 
-#: ../skills-widget.php:189
+#: ../skills-widget.php:185
 msgid "Skills"
 msgstr "Habilidades"
 
-#: ../skills-widget.php:195
+#: ../skills-widget.php:200
 msgid "Title:"
 msgstr "Título:"
 
-#: ../skills-widget.php:199
+#: ../skills-widget.php:204
 msgid "Width:"
 msgstr "Ancho:"
 
+#: ../skills-widget.php:209
+msgid "Skill Name"
+msgstr "Nombre de habilidad"
+
+#: ../skills-widget.php:210
+msgid "Percentage (%)"
+msgstr "Porcentaje (%)"
+
+#: ../skills-widget.php:211
+msgid "Color"
+msgstr "Color"
+
+#: ../skills-widget.php:213
+msgid "Add"
+msgstr "Añadir"
+
+#: ../skills-widget.php:231
+#: ../skills-widget.php:271
+msgid "Remove"
+msgstr "Eliminar"
+
+#, fuzzy
+#~ msgid "Allow skills diagrams"
+#~ msgstr "Permite integrar diagramas de habilidades"
