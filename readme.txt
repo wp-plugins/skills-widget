@@ -2,8 +2,8 @@
 Contributors: jlopezcur
 Tags: html5, diagram, widget
 Requires at least: 2.8
-Tested up to: 3.3.1
-Stable tag: 1.0
+Tested up to: 3.3.2
+Stable tag: 0.1.0
 
 == Description ==
 
@@ -23,5 +23,5 @@ Based on work of Marcin Dziewulski in the tutorial http://tympanus.net/codrops/2
 
 == ChangeLog ==
 
-= 1.0 =
+= 0.1.0 =
 * Initial version

@@ -3,9 +3,9 @@
 **************************************************************************
 
 Plugin Name:  Skills Widget
-Plugin URI:   https://github.com/jlopezcur/skills-widget
+Plugin URI:   https://github.com/noknokstdio/skills-widget
 Description:  HTML5 Dinamyc Skills Diagram
-Version:      1.0
+Version:      0.1.0
 Author:       Javier López Úbeda
 Author URI:   http://www.noknokstdio.com
 
@@ -223,6 +223,7 @@ jQuery(function(){ o.init(); });
                 </td>
                 <td>
                     <input class="widefat color" name="<?php echo 'widget-'.$this->id_base.'['.$this->number.'][skill]['.$i.'][color]'; ?>" type="text" value="<?php echo $skill['color'] ?>" />
+                    <div class="colorpickerskills"></div>
                 </td>
                 <td valign="middle" align="right">
                     <a href="javascript: void(0);" class="button-primary"
@@ -234,22 +235,26 @@ jQuery(function(){ o.init(); });
             <?php $i++; endforeach; ?>
         </table>
         <script type="text/javascript">
-        jQuery.noConflict();
         jQuery(document).ready(function($) {
-            $('#<?php echo $this->id_base.$this->number.'-table'; ?> input.color').ColorPicker({
-                onSubmit: function(hsb, hex, rgb, el) {
-                    $(el).val('#'+hex);
-                    $(el).ColorPickerHide();
-                },
-                onBeforeShow: function () {
-                    $(this).ColorPickerSetColor(this.value);
-                }
-            })
-            .bind('keyup', function(){
-                $(this).ColorPickerSetColor(this.value);
-            });
             skill_iter_<?php echo $this->number ?> = <?php echo $i ?>;
+            addColorPicker<?php echo $this->number; ?>();
         });
+        function addColorPicker<?php echo $this->number; ?>() {
+            jQuery('div.colorpickerskills').hide();
+            jQuery('input.color').each(function() {
+                jQuery(this).next('div.colorpickerskills').farbtastic(jQuery(this));
+            });
+            jQuery('input.color').click(function() {
+                jQuery(this).next('div').each(function() {
+                    if (jQuery(this).css('display') != 'block') jQuery(this).slideDown();
+                });
+            });
+            jQuery(document).mousedown(function() {
+                jQuery('div.colorpickerskills').each(function() {
+                    if (jQuery(this).css('display') == 'block') jQuery(this).slideUp();
+                });
+            });
+        }
         function addSkill<?php echo $this->number; ?>() {
             var nameBase = '<?php echo 'widget-'.$this->id_base.'['.$this->number.'][skill]'; ?>';
             var out = '';
@@ -258,7 +263,8 @@ jQuery(function(){ o.init(); });
             out += '</td><td>';
             out += '<input class="widefat" name="'+nameBase+'['+skill_iter_<?php echo $this->number ?>+'][percentage]" type="text" value="0" />';
             out += '</td><td>';
-            out += '<input class="widefat color" id="<?php echo $this->id_base.$this->number; ?>'+skill_iter_<?php echo $this->number ?>+'" name="'+nameBase+'['+skill_iter_<?php echo $this->number ?>+'][color]" type="text" value="#'+Math.floor(Math.random()*16777215).toString(16)+'" />';
+            out += '<input class="widefat color" name="'+nameBase+'['+skill_iter_<?php echo $this->number ?>+'][color]" type="text" value="#'+Math.floor(Math.random()*16777215).toString(16)+'" />';
+            out += '<div class="colorpickerskills"></div>';
             out += '</td><td valign="middle" align="right">';
             out += '<a href="javascript: void(0);" class="button-primary"';
             out += 'onclick="jQuery(this).parent().parent().remove();">';
@@ -266,20 +272,7 @@ jQuery(function(){ o.init(); });
             out += '</a>';
             out += '</td></tr>';
             jQuery('#<?php echo $this->id_base.$this->number.'-table'; ?>').append(out);
-            
-            jQuery('#<?php echo $this->id_base.$this->number; ?>'+skill_iter_<?php echo $this->number ?>).ColorPicker({
-                onSubmit: function(hsb, hex, rgb, el) {
-                    jQuery(el).val('#'+hex);
-                    jQuery(el).ColorPickerHide();
-                },
-                onBeforeShow: function () {
-                    jQuery(this).ColorPickerSetColor(this.value);
-                }
-            })
-            .bind('keyup', function(){
-                jQuery(this).ColorPickerSetColor(this.value);
-            });
-            
+            addColorPicker<?php echo $this->number; ?>();
             skill_iter_<?php echo $this->number ?>++;
         }
         </script>
@@ -292,8 +285,7 @@ jQuery(function(){ o.init(); });
 add_action('widgets_init', create_function('', 'register_widget("skills_widget");'));
 
 function skills_widget_init() {
-    wp_enqueue_script('raphael', plugin_dir_url( __FILE__ ) .'raphael.js',array('jquery'));
-    wp_enqueue_style('color-picker', plugin_dir_url( __FILE__ ) . 'colorpicker/css/colorpicker.css');
-    wp_enqueue_script('color-picker-skill', plugin_dir_url( __FILE__ ) .'colorpicker/js/colorpicker.js',array('jquery'));
+    wp_enqueue_script('raphael', plugin_dir_url(__FILE__).'raphael.js', array('jquery'));
+    wp_enqueue_style('farbtastic'); wp_enqueue_script('farbtastic');
 }
 add_action('init', 'skills_widget_init');
