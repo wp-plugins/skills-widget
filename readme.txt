@@ -1,5 +1,5 @@
 === Skills Widget ===
-Contributors: jlopezcur
+Contributors: noknok
 Tags: html5, diagram, widget
 Requires at least: 2.8
 Tested up to: 3.3.2
